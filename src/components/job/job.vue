@@ -1,8 +1,8 @@
 <template>
-<div class="job">
+<div id="job">
 <template>
-  <div id="job" v-for="(item,index) in joblist">
-  <router-link :to="item.url">
+  <div class="job border-1px"  v-for="(item,index) in joblist">
+  <router-link :to="item.url+item.id">
    <div class="job-style job-word">{{item.position}}</div>
    <div class="job-info">
      <span class="job-address  iconfont icon-dizhi"> {{item.address}} </span>
@@ -10,7 +10,7 @@
    </div>
    <div class="job-style">
      <div class="job-monery">{{item.salary}}</div>
-     <div class="job-time">{{item.time}}</div>
+     <div class="job-time">{{item.time1}}</div>
    </div>
    </router-link>
   </div>
@@ -20,30 +20,27 @@
 </template>
 
 <script>
-import moment from 'moment'
   export default {
+    props:{
+      joblist:{
+        type:Array,
+        default:null
+      }
+    },
     data(){
       return {
        joblist:[]
       }
     },
-      created(){
-           let _this = this;
-        _this.$http.get('/api/getJobList').then((res)=>{
-        var  a;
-        for (var i = 0; i <res.data.length; i++) {
-          a=res.data[i];
-          a.time=moment(a.updated).format("YYYY/MM/DD");
-          this.joblist.push(a);
-        }
-        },(err)=>{
-          console.log(err);
-        })
-    },
-  }
+    methods:{},
+      created(){ },
+}
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus" scoped>
+@import "../../common/stylus/mixin.styl"
+.job
+ border-1px(rgb(236, 243, 248))
  .job-style
   width 90%
   margin 0 auto

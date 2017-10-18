@@ -10,7 +10,6 @@ server.all('*', function(req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Headers', 'Content-Type, Content-Length, Authorization, Accept, X-Requested-With , yourHeaderFeild');
     res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
-
     if (req.method == 'OPTIONS') {
         res.send(200);
         /make the require of options turn back quickly/
@@ -18,8 +17,8 @@ server.all('*', function(req, res, next) {
         next();
     }
 });
-server.listen(3001, () => {
-    console.log("正在监听3001端口");
+server.listen(3008, () => {
+    console.log("正在监听3008端口");
 
 });
 

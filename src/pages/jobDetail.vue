@@ -1,20 +1,18 @@
 <template>
 <div class="job-detail">
-  <mt-header>
-  <router-link to="/" slot="left">
-    <mt-button icon="back"> <span style="padding-left:1.5rem;font-size:1.25rem;vertical-align:middle;color:black;font-weight:500;">岗位详情</span></mt-button>
+  <div class="head-nav">
+  <div class="left">
+    <router-link to="/" slot="left">
+   <span class="iconfont icon-left" onclick="window.history.go(-1)"></span>
+   <span style="vertical-align:text-top;font-size:1.2rem;color:black;">岗位详情</span>
   </router-link>
-  <mt-button  slot="right">
-    <span class="iconfont icon-star"></span>
-  </mt-button>
-  <mt-button  slot="right">
-    <span class="iconfont icon-fenxiang"></span>
-  </mt-button>
-  <mt-button  slot="right">
-    <span class="iconfont icon-info" style="margin-right:1rem;"></span>
-   </mt-button>
-
-</mt-header>
+  </div>
+  <div class="right">
+    <span class="iconfont icon-star right-item"></span>
+    <span class="iconfont icon-fenxiang right-item"></span>
+    <span class="iconfont icon-info right-item"></span>
+  </div>
+</div>
 <div class="job-style job-word">111</div>
 <div class="job-main">
 <div class="job-style">
@@ -53,39 +51,61 @@
   </div>
 </div>
 <div class="distance">
- <router-link to="#">
    <span>温岭市 <span style="color:#0b91e2;">(距你28.0km)</span></span>
-  <div class="map">
-
+  <router-link to="/amap">
+  <div class="mapcon">
+  <mapCom></mapCom>
   </div>
   </router-link>
+
 </div>
 </div>
 </template>
-
 <script>
+import mapCom from 'components/map.vue'
   export default {
+    components:{
+      mapCom
+    },
     data(){
       return {
-       joblist:[]
-      }
+    }
     },
       created(){
-           let _this = this;
-        _this.$http.get('/api/getJobList').then((res)=>{
-        this.joblist=res.data;
+        let num=this.$route.params.id
+        let _this = this;
+      /*  _this.$http.post('/api/getJobDetail',
+          {params:{num:num}}
+          ).then((res)=>{
+        this.jobdetail=res.data;
+        console.info(res.data)
         },(err)=>{
           console.log(err);
-        })
+        })*/
     },
   }
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus" scoped>
+.map
+ height 20vh !important
+.head-nav
+  display flex
+  padding 0.8rem 0.3rem
+  border-bottom: 1px solid #dedee3;
+  .left
+   width 40%
+   text-align left
+   padding-top 0.3rem
+  .right
+   width 60%
+   margin 0 auto
+   text-align right
+   .right-item
+    padding 0.8rem
  .job-main
   width 100%
   margin 0 auto
-  border-bottom 1px solid #d5d5db
  .job-style
   width 90%
   margin 0 auto
@@ -157,7 +177,11 @@
  border-radius 10px
  text-align center
  padding-top 5px
-
-
-
+.distance
+ width 95%
+ margin 0 auto
+ .mapcon
+  padding-top 0.8rem
+.amap-demo
+ height 16vh
 </style>

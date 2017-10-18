@@ -4,26 +4,13 @@ const db = mysql.createPool({
    host: 'localhost',
    user: 'root',
    password: '123456',
-   database: 'yaoyao',
-/*  host: '116.62.196.89',
-  user: 'tndn',
-  password: 'tndn0505',
-  database: 'weixinApp',
-  port: '3306'*/
+   database: 'yaoyao'
 });
-// const db_port = '3306';
-// const db_user = 'tndn';
-// const db_pw = 'tndn0505';
-// const db_host = '116.62.196.89';
-// const db_database = 'weixinApp';
-
 module.exports = () => {
   const route = express.Router();
-
-  //商店表单查询
   const getNavStr = `SELECT * FROM navlist`;
 
-  route.get('/api/getNavList', (req, res) => {
+  route.post('/api/getNavList', (req, res) => {
     getNavDatas(getNavStr, res);
   });
   function getNavDatas(getNavStr, res) {
@@ -43,7 +30,7 @@ module.exports = () => {
   //工作信息查询
    const getJobStr = `SELECT * FROM joblist`;
 
-  route.get('/api/getJobList', (req, res) => {
+  route.post('/api/getJobList', (req, res) => {
     getJobDatas(getJobStr, res);
   });
   function getJobDatas(getJobStr, res) {
@@ -60,7 +47,21 @@ module.exports = () => {
       }
     });
   }
+  route.post('/api/getJobDetail', (req, res) => {
+    let num = req.query.num;
+    // const imagesStr = `select image_url from product_image where product_id='${produId}'`;
+      const storeStr = `select * from joblist where id='${num}'`;
+    db.query(storeStr, (err, data) => {
+      if (err) {
+        console.error(err);
+        res.status(500).send('database err').end();
+      } else {
+        // storeDetailDatas.push(data);
+        res.send(data);
+      }
+    });
 
+  });
 
   //商品表单查询
  /* const getCommodityStr = `SELECT commodity_id,commodity_name,commodity_price,commodity_sort,commodity_norm,commodity_unit,commodity_shelf_life,commodity_purchase_notes,commodity_quantity FROM commodity`;

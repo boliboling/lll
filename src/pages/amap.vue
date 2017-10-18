@@ -1,7 +1,7 @@
 <template>
 <div class="mapic">
  <div class="option">
-   <div class="ok">
+   <div class="ok" @click="showDialog('isShowNav')">
      <div class="iconfont icon-daohang" style="padding-bottom:0.3rem;"></div>
      导航
    </div>
@@ -10,29 +10,50 @@
       纠错
    </div>
    </div>
-  <mt-header>
+  <div class="head-bar" >
    <router-link to="/" slot="left">
-    <mt-button icon="back"> <span style="padding-left:1.5rem;font-size:1.25rem;vertical-align:middle;color:black;font-weight:500;">公司地址</span></mt-button>
+    <span class="iconfont icon-left" style="font-size:1.5rem;">  公司地址</span>
   </router-link>
-</mt-header>
-<Mapic></Mapic>
+</div>
+<mapCom></mapCom>
 <div class="foot">
   <span>查看附近相似岗位</span>
 </div>
-</div>
+<my-dialog :is-show="isShowNav"  @on-close="hideDialog('isShowNav')"></my-dialog>
+   </div>
 </template>
 
 <script>
-import Mapic from 'components/map.vue'
+import mapCom from 'components/map.vue'
+import MyDialog from 'components/toast'
   export default {
     components:{
-      Mapic
+      mapCom,
+      MyDialog
+    },
+    data(){
+      return {
+       show:true,
+       isShowNav: false
+      }
+    },
+    methods: {
+    showDialog (param) {
+      this[param] = true
+    },
+    hideDialog (param) {
+      this[param] = false
     }
+  }
   }
 </script>
 
 
-<style lang="stylus" rel="stylesheet/stylus">
+<style lang="stylus" rel="stylesheet/stylus" scoped>
+.map
+ height 100vh !important
+.head-bar
+ padding 1rem 0.5rem
 .mapic
  position relative
  width 100%
@@ -53,7 +74,7 @@ import Mapic from 'components/map.vue'
   position fixed
   bottom 0
   text-align center
-  color #0e6ce4
+  color #237def
   width 100%
   height 40px
   line-height 40px
