@@ -1,4 +1,2 @@
-//常量用来给mutations用
-export const LOGIN = 'LOGIN';
-
-export const USERNAME = 'USERNAME';
+export const LOGIN='LOGIN';
+export const LOGIN_OUT='LOGIN_OUT';

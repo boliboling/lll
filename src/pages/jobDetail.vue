@@ -68,22 +68,22 @@ import mapCom from 'components/map.vue'
       mapCom
     },
     data(){
-      return {
-    }
+      return {}
     },
       created(){
-        let num=this.$route.params.id
+   /*     let num=this.$route.params.id
         let _this = this;
-      /*  _this.$http.post('/api/getJobDetail',
-          {params:{num:num}}
-          ).then((res)=>{
-        this.jobdetail=res.data;
-        console.info(res.data)
+        _this.$http.post('/api/getJobDetail',{
+           num:num
+        }).then((res)=>{
+          this.jobdetail=res.data;
+          console.log(res.data);
         },(err)=>{
           console.log(err);
-        })*/
-    },
+        });
+    },*/
   }
+}
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus" scoped>

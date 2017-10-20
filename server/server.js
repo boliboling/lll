@@ -4,8 +4,7 @@ const bodyParser = require('body-parser');
 // const cookieSession = require('cookie-session');
 const mysql = require('mysql');
 const server = express();
-server.use(bodyParser.urlencoded({ extended: false }));
-//the cores config
+server.use(bodyParser.urlencoded({ extended: true }));
 server.all('*', function(req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Headers', 'Content-Type, Content-Length, Authorization, Accept, X-Requested-With , yourHeaderFeild');
@@ -17,8 +16,8 @@ server.all('*', function(req, res, next) {
         next();
     }
 });
-server.listen(3008, () => {
-    console.log("正在监听3008端口");
+server.listen(3005, () => {
+    console.log("正在监听3005端口");
 
 });
 

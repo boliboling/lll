@@ -4,7 +4,7 @@ import router from './router/routes.js'
 import store from './store'
 import 'common/stylus/index.styl'
 import MintUI from 'mint-ui'
-import axios from 'axios'
+/*import axios from 'axios'*/
 import 'mint-ui/lib/style.css'
 import 'assets/icon/iconfont.css'
 import AMap from 'vue-amap'
@@ -18,11 +18,6 @@ AMap.initAMapApiLoader({
   uiVersion: '1.0'
 })
 Vue.use(MintUI)
-
-axios.defaults.baseURL = 'http://localhost:3008/';
-axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded';
-Vue.prototype.$http = axios;
-/* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
@@ -30,7 +25,7 @@ new Vue({
   template: '<App/>',
   components: { App }
 });
-router.beforeEach((to, from, next) => {
+/*router.beforeEach((to, from, next) => {
     if (to.meta.requireAuth) {  // 判断该路由是否需要登录权限
         if (store.state.token) {  // 通过vuex state获取当前的token是否存在
             next();
@@ -45,6 +40,6 @@ router.beforeEach((to, from, next) => {
     else {
         next();
     }
-})
+})*/
 
 

@@ -57,25 +57,7 @@ export default{
        joblist:[]
       }
     },
-    created(){
-        let _this = this;
-        _this.$http.post('/api/getNavList').then((res)=>{
-          _this.navlist=res.data;
-          console.log(res.data);
-        },(err)=>{
-          console.log(err);
-        });
-       _this.$http.post('/api/getJobList').then((res) => {
-        var  a;
-       for (var i = 0; i <res.data.length; i++) {
-         a=res.data[i];
-         a.time1=_this. myfilter(a.updated);
-         _this.joblist.push(a);
-         console.log(_this.joblist);
-         }},(err) => {
-          console.log(err);
-        })
-      },
+    created(){},
     methods:{
              infinite(done) {
                 if(this.noData) {

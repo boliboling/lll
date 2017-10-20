@@ -1,19 +1,11 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-
-import mutations from './mutations.js'
-import actions from './actions.js'
-
-
 Vue.use(Vuex);
-
-const state = {
-    token: null,
-    username: ''
-};
-
+const debug = process.env.NODE_ENV !== 'production';
+import login from './modules/login';
 export default new Vuex.Store({
-    state,
-    mutations,
-    actions
+  modules: {
+    login
+  },
+  strict: debug,
 });
