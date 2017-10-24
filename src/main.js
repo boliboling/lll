@@ -4,7 +4,6 @@ import router from './router/routes.js'
 import store from './store'
 import 'common/stylus/index.styl'
 import MintUI from 'mint-ui'
-/*import axios from 'axios'*/
 import 'mint-ui/lib/style.css'
 import 'assets/icon/iconfont.css'
 import AMap from 'vue-amap'
@@ -18,6 +17,9 @@ AMap.initAMapApiLoader({
   uiVersion: '1.0'
 })
 Vue.use(MintUI)
+
+
+
 new Vue({
   el: '#app',
   router,
@@ -25,14 +27,14 @@ new Vue({
   template: '<App/>',
   components: { App }
 });
-/*router.beforeEach((to, from, next) => {
+router.beforeEach((to, from, next) => {
     if (to.meta.requireAuth) {  // 判断该路由是否需要登录权限
-        if (store.state.token) {  // 通过vuex state获取当前的token是否存在
+        if(localStorage.getItem("token")) {  // 通过vuex state获取当前的token是否存在
             next();
         }
         else {
             next({
-                path: '/login',
+                path: 'login',
                 query: {redirect: to.fullPath}  // 将跳转的路由path作为参数，登录成功后跳转到该路由
             })
         }
@@ -40,6 +42,6 @@ new Vue({
     else {
         next();
     }
-})*/
+})
 
 

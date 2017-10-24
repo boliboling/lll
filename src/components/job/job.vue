@@ -10,7 +10,7 @@
    </div>
    <div class="job-style">
      <div class="job-monery">{{item.salary}}</div>
-     <div class="job-time">{{item.time1}}</div>
+     <div class="job-time">{{item.time}}</div>
    </div>
    </router-link>
   </div>

@@ -1,11 +1,17 @@
 <template>
   <div id="navbar">
       <div class="footer" v-if="show">
-        <div class="item" :class="{active:index==num}" v-for="(item,index) in nav" @click="change(index)">
+        <div class="item" v-for="(item,index) in nav" >
+        <router-link :to="item.url">
         <div>
-          <div class="iconfont" :class="item.icon" style="font-size:1.25rem;padding:0.5rem 0;"></div>
+          <div>
+            <span class="iconfont father" :class="item.icon" style="font-size:1.25rem;padding:0.5rem 0;display:inline-block;">
+            <span class="iconfont" :class="item.dot"></span>
+            </span>
+          </div>
           <div class="text">{{item.title}}</div>
         </div>
+        </router-link>
       </div>
   </div>
 </div>
@@ -16,13 +22,9 @@ import router from '../router/routes.js'
   export default {
  props:{
       show:{
-     type:Boolean,
+      type:Boolean,
       default:true
-     },
-     num:{
-      type:Number,
-      default:0
-      }
+     }
      },
     data(){
       return {
@@ -31,20 +33,19 @@ import router from '../router/routes.js'
          {id:1,icon:'icon-gongzuo',title:'工作',url:'/index'},
          {id:2,icon:'icon-xiaoxi',title:'消息',url:'/info'},
          {id:3,icon:'icon-faxian',title:'发现',url:'/find'},
-         {id:4,icon:'icon-buoumaotubiao03',title:'我的',url:'my'}
+         {id:4,icon:'icon-buoumaotubiao03',title:'我的',url:'my',dot:'icon-dot son'}
         ]
       }
     },
     methods:{
-      change(index){
-        this.num=index;
-        router.push(this.nav[index].url);
-      }
+    },
+    computed(){
+
     }
   }
 </script>
 
-<style lang="stylus" rel="stylesheet/stylus">
+<style lang="stylus" rel="stylesheet/stylus" scoped>
  .footer
   display flex
   position fixed
@@ -60,7 +61,15 @@ import router from '../router/routes.js'
    width 25%
    margin auto
    text-align center
-  .active
-   color #2d6ee0
+   .father
+     position relative
+   .son
+     position absolute
+     color red
+     font-size 2.5rem
+     top -0.5rem
+     left 0.2rem
+   .router-link-active
+    color #2d6ee0
 
 </style>

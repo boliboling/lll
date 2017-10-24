@@ -63,27 +63,28 @@
 </template>
 <script>
 import mapCom from 'components/map.vue'
+import axios from '../store/api/axios.js'
   export default {
     components:{
       mapCom
     },
     data(){
-      return {}
+      return {
+      }
     },
       created(){
-   /*     let num=this.$route.params.id
-        let _this = this;
-        _this.$http.post('/api/getJobDetail',{
-           num:num
-        }).then((res)=>{
+      let num=this.$route.params.id
+        let data={
+         num:num
+       };
+         axios.jobdetail(data).then((res)=>{
           this.jobdetail=res.data;
           console.log(res.data);
         },(err)=>{
           console.log(err);
         });
-    },*/
+    }
   }
-}
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus" scoped>

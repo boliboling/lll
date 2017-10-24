@@ -66,7 +66,7 @@ export default {
   margin-left -25%
   z-index 800
   border 2px solid #464068
-  padding 2%
+  padding 2% 3%
   line-height 1.6
 .dialog-close
   position absolute

@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'iconfont';  /* project id 424756 */
-  src: url('//at.alicdn.com/t/font_424756_mos4m4szpo0w9udi.eot');
-  src: url('//at.alicdn.com/t/font_424756_mos4m4szpo0w9udi.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_424756_mos4m4szpo0w9udi.woff') format('woff'),
-  url('//at.alicdn.com/t/font_424756_mos4m4szpo0w9udi.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_424756_mos4m4szpo0w9udi.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_424756_3ljomb10ibrl766r.eot');
+  src: url('//at.alicdn.com/t/font_424756_3ljomb10ibrl766r.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_424756_3ljomb10ibrl766r.woff') format('woff'),
+  url('//at.alicdn.com/t/font_424756_3ljomb10ibrl766r.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_424756_3ljomb10ibrl766r.svg#iconfont') format('svg');
 }
 .iconfont {
   font-family:"iconfont" !important;
@@ -13,6 +13,8 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.icon-p:before { content: "\e621";}
+.icon-fixed:before { content: "\e620";}
 .icon-left:before { content: "\e616";font-size: 1.5rem }
 .icon-daohang:before { content: "\e71c";font-size: 1.5rem }
 .icon-falut:before { content: "\e614";font-size: 1.5rem }
@@ -104,7 +106,7 @@ color:#0d73c0 !important;
 
 .icon-dizhi:before { content: "\e61f"; color: #d0d4d3; }
 
-.icon-dot:before { content: "\e601"; }
+.icon-dot:before { content: "\e601";color: red; }
 
 .icon-saoma:before {
  content: "\e61e";

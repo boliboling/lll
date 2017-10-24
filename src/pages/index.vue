@@ -44,6 +44,7 @@ import Swiper from 'components/swiper.vue'
 import Job from 'components/job/job.vue'
 import Nava from 'components/navbar.vue'
 import VueAMap from 'vue-amap'
+import axios from '../store/api/axios.js'
 export default{
     components:{
        Swiper,
@@ -57,7 +58,24 @@ export default{
        joblist:[]
       }
     },
-    created(){},
+    created(){
+      axios.navList().then((res) =>{
+              this. navlist=res.data;
+              }).catch(err => {
+                console.info(err);
+              });
+              axios.joblist().then((res) =>{
+              let a=[];
+              for(var i=0;i<res.data.length;i++){
+               a.time=this.myfilter(res.data[i].updated);
+               a=res.data[i];
+               this.joblist.push(a);
+               console.info(a);
+              }
+              }).catch(err => {
+                console.info(err);
+              });
+    },
     methods:{
              infinite(done) {
                 if(this.noData) {

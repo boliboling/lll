@@ -1,7 +1,7 @@
 <template>
   <div id="my">
   my
-  <Nava :num="num"></Nava>
+  <Nava></Nava>
 </div>
 </template>
 
@@ -14,7 +14,7 @@ export default{
     },
     data(){
       return {
-      num:3
+
       }
     },
     methods:{
@@ -23,6 +23,6 @@ export default{
   }
 </script>
 
-<style lang="stylus" rel="stylesheet/stylus">
+<style lang="stylus" rel="stylesheet/stylus" >
 
 </style>

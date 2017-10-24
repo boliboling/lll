@@ -1,16 +1,9 @@
 import api from '../api/axios';
 
 import * as types from '../types';
-
-import {
-  getToken,
-  saveToken,
-  removeToken
-} from '../api/cache';
-
 const state = {
-  token: getToken() || '',
-  userInfo: {}
+  token:'',
+  userInfo:{}
 };
 
 const getters = {
@@ -19,8 +12,8 @@ const getters = {
 
 const mutations = {
   [types.LOGIN](state, data) {
-   /* state.token = data.token;*/
-    state.userInfo = data.userInfo;
+      state.userInfo = data;
+      state.token =state.userInfo[0].id
   },
   [types.LOGIN_OUT](state, data) {
     state.token = null;
@@ -32,7 +25,6 @@ const actions = {
     return api.login(data)
               .then(resp => {
                 store.commit(types.LOGIN, resp.data)
-                saveToken('lphva', 3600000, data.autoLogin)
                 return resp
               })
               .catch(resp => {
@@ -40,7 +32,6 @@ const actions = {
               })
   },
   loginOut(store) {
-    removeToken()
     store.commit(types.LOGIN_OUT)
   },
 };

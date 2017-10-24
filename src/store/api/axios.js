@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 import qs from 'qs';
-
-let API_ROOT = 'http://localhost:3005/';
+import store from '../index.js'
+let API_ROOT = 'http://localhost:3009/';
 
 axios.defaults.baseURL = API_ROOT;
 axios.defaults.headers.Accept = 'application/json';
@@ -10,9 +10,9 @@ axios.defaults.headers.Accept = 'application/json';
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
 axios.interceptors.request.use(config => {
-/*  if(store.state.token){
+/* if(store.state.token){
     config.headers.Authorization = `token ${store.state.token}`;
-  }*/
+   }*/
   return config;
 }, error => {
   return Promise.reject(error);
@@ -21,13 +21,13 @@ axios.interceptors.request.use(config => {
 axios.interceptors.response.use(response => {
   return response;
 }, error => {
-/*   if (error.response) {
+/* if (error.response) {
             switch (error.response.status) {
                 case 401:
                     // 返回 401 清除token信息并跳转到登录页面
                     store.commit(types.LOGOUT);
                     router.replace({
-                        path: '/api/login',
+                        path: 'login',
                         query: {redirect: router.currentRoute.fullPath}
                     })
             }
@@ -40,5 +40,14 @@ export default {
   login(data) {
     console.info(data);
     return axios.post('/api/login', qs.stringify(data));
+  },
+   navList() {
+    return axios.post('/api/getNavList');
+  },
+  joblist(){
+    return axios.post('/api/getJobList');
+  },
+  jobdetail(data){
+     return axios.post('/api/getJobDetail',qs.stringify(data));
   }
 };

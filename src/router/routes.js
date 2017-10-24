@@ -41,12 +41,14 @@ export default new Router({
      {
       path: '/find',
       name: 'find',
-      component: find
+      component: find,
+      meta: { requireAuth: true }
     },
      {
       path: '/my',
       name: 'my',
-      component: my
+      component: my,
+       meta: { requireAuth: true }
     },
      {
       path: '/info',

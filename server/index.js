@@ -8,7 +8,7 @@ const db = mysql.createPool({
 });
 module.exports = () => {
   const route = express.Router();
-/*  const getNavStr = `SELECT * FROM navlist`;
+ const getNavStr = `SELECT * FROM navlist`;
 
   route.post('/api/getNavList', (req, res) => {
     getNavDatas(getNavStr, res);
@@ -61,32 +61,23 @@ module.exports = () => {
       }
     });
 
-  });*/
-//登录
-  route.post('/api/login', (req, res) => {
-    let name = req.body.username;
-    let pass = req.body.password;
-    console.log('11'+name);
-    console.log('11'+pass);
-    const  sql=`select * from userinfo where name='${name}' and pass='${pass}'`;
-    goLogin(sql, res);
   });
-  function goLogin(sql, res) {
-    db.query(sql, (err, result) => {
+//登录
+ route.post('/api/login', (req, res) => {
+      let name = req.body.username;
+    let pass = req.body.password;
+  const  sql=`select * from userinfo where name='${name}' and pass='${pass}'`;
+    db.query(sql, (err, data) => {
       if (err) {
-        console.log(err);
+        console.error(err);
         res.status(500).send('database err').end();
       } else {
-        if (result.length == 0) {
-          res.status(500).send('no datas').end();
-        } else {
-          res.send("yes");
-        }
+        // storeDetailDatas.push(data);
+        res.send(data);
       }
     });
-  }
 
-
+  });
 
   return route;
 }

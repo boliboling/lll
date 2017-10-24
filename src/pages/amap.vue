@@ -11,15 +11,22 @@
    </div>
    </div>
   <div class="head-bar" >
-   <router-link to="/" slot="left">
-    <span class="iconfont icon-left" style="font-size:1.5rem;">  公司地址</span>
-  </router-link>
+    <span class="iconfont icon-left" style="font-size:1.5rem;color:#878282;" @click="routerBack">  公司地址</span>
 </div>
 <mapCom></mapCom>
 <div class="foot">
   <span>查看附近相似岗位</span>
 </div>
-<my-dialog :is-show="isShowNav"  @on-close="hideDialog('isShowNav')"></my-dialog>
+<my-dialog :is-show="isShowNav"  @on-close="hideDialog('isShowNav')">
+  <slot>
+    <div class="tip">
+      <div class="con">跳转高得地图导航?</div>
+      <div class="choose" style="text-align:right;padding-top:10px;color:#1367e6;">
+       <span>跳转</span>
+      </div>
+    </div>
+  </slot>
+</my-dialog>
    </div>
 </template>
 
@@ -43,6 +50,9 @@ import MyDialog from 'components/toast'
     },
     hideDialog (param) {
       this[param] = false
+    },
+    routerBack(){
+      this.$router.go(-1);
     }
   }
   }
